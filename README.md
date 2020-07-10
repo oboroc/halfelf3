@@ -7,3 +7,5 @@ Copyright (c) 2020 xFar team
 Thanks to RomanRom2 for pointing me to the source code
 of the original xFar plugins:
 <http://zxsn.ru/halfelf/>.
+
+TODO: https://api.farmanager.com/ru/articles/escape.html
