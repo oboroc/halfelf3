@@ -15,7 +15,7 @@ Detector*            detector;
 
 void WINAPI _export SetStartupInfo(PluginStartupInfo *info)
 {
-  // получили свою копию PluginStartupInfo
+  // ╨┐╨╛╨╗╤Г╤З╨╕╨╗╨╕ ╤Б╨▓╨╛╤О ╨║╨╛╨┐╨╕╤О PluginStartupInfo
   startupInfo         = *info;
 
   reg                 = new Registry(startupInfo.RootKey);
@@ -42,7 +42,7 @@ HANDLE WINAPI _export OpenFilePlugin(char *name, const unsigned char *data, int 
 
   if(dataSize < (sizeof(HoHdr) + sizeof(ZipedFileHdr) + 1)) return INVALID_HANDLE_VALUE;
 
-  // проверим на HoBet'ность
+  // ╨┐╤А╨╛╨▓╨╡╤А╨╕╨╝ ╨╜╨░ HoBet'╨╜╨╛╤Б╤В╤М
   HoHdr hdr;
   CopyMemory(&hdr, data, sizeof(HoHdr));
   if(hdr.checkSum != calculateCheckSum(hdr)) return INVALID_HANDLE_VALUE;

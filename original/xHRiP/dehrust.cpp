@@ -11,7 +11,7 @@
 
 BYTE *hr_d_output;
 BYTE *hr_d_input;
-BYTE  hr_d_tagbyte;/*°„‰•‡ §´Ô °®‚Æ¢.*/
+BYTE  hr_d_tagbyte;/*–±—É—Ñ–µ—Ä –¥–ª—è –±–∏—Ç–æ–≤.*/
 
 BYTE hr_d_getbit(void)
 {

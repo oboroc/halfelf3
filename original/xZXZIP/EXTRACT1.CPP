@@ -1,11 +1,11 @@
 #include <windows.h>
 #include "extract.hpp"
 
-//≠•™Æ‚Æ‡Î• ™Æ¨†≠§Î
+//–Ω–µ–∫–æ—Ç–æ—Ä—ã–µ –∫–æ–º–∞–Ω–¥—ã
 #define xor_a       a^=a; fz=1; fc=0;
 #define djnz(label) b--; if(b) goto label;
 
-//‡•£®·‚‡Î Z80
+//—Ä–µ–≥–∏—Å—Ç—Ä—ã Z80
 #define bc BC.r16
 #define de DE.r16
 #define hl HL.r16
@@ -25,7 +25,7 @@ extern BYTE *curTo, *curFrom;
 extern WORD toSize_, fromSize_;
 extern WORD noBytesRead, noBytesWritten;
 
-//‡•£®·‚‡Î Z80
+//—Ä–µ–≥–∏—Å—Ç—Ä—ã Z80
 struct _rlh{BYTE LO; BYTE HI;};
 struct _f{unsigned f_s:1;unsigned f_z:1;unsigned f_5:1;unsigned f_h:1;unsigned f3_:1;unsigned f_p:1;unsigned f_n:1;unsigned f_c:1;unsigned aa:8;};
 union reg
@@ -35,27 +35,27 @@ union reg
   struct _f f;
 } AF, HL, BC, DE, af_, hl_, bc_, de_;
 
-//¢·• ‰„≠™Ê®®
+//–≤—Å–µ —Ñ—É–Ω–∫—Ü–∏–∏
 call7205();call77de();call77f5();call75aa();call763f();call7529();call782c();call78a7();call78e1();call78b7();call78fb();call78b1();call7479();call74b8();call78f3();call7924();call78db();call7659();call769d();call76d2();call76fd();call7732();
 l78ab();l78c7();l78e7();l790a();
 
-//‰„≠™Ê®® ‡†°Æ‚Î ·Æ ·‚•™Æ¨
+//—Ñ—É–Ω–∫—Ü–∏–∏ —Ä–∞–±–æ—Ç—ã —Å–æ —Å—Ç–µ–∫–æ–º
 WORD zxstack[40], sp=0;
 void push(WORD val)
 {
-  if(sp>38) return;//·‚•™ Ø•‡•ØÆ´≠•≠
+  if(sp>38) return;//—Å—Ç–µ–∫ –ø–µ—Ä–µ–ø–æ–ª–Ω–µ–Ω
   zxstack[sp]=val;
   sp++;
 }
 
 void pop(WORD &val)
 {
-  if(sp==0) return;//·‚•™ Ø„·‚
+  if(sp==0) return;//—Å—Ç–µ–∫ –ø—É—Å—Ç
   sp--;
   val=zxstack[sp];
 }
 
-//Æ°¨•≠ ‡•£®·‚‡Æ¢
+//–æ–±–º–µ–Ω —Ä–µ–≥–∏—Å—Ç—Ä–æ–≤
 void ex_sp_hl(void)
 {
   WORD tmp=zxstack[sp-1];
@@ -69,7 +69,7 @@ void ex_de_hl(void)
   tmp=de; de=hl; hl=tmp;
 }
 
-//≠•™Æ‚Æ‡Î• „Á†·‚™® ¨†¨Ô‚® Z80 ØÆ§ ‚†°´®ÊÎ ® ‰„≠™Ê®® §Æ·‚„Ø† ™ ≠®¨
+//–Ω–µ–∫–æ—Ç–æ—Ä—ã–µ —É—á–∞—Å—Ç–∫–∏ –º–∞–º—è—Ç–∏ Z80 –ø–æ–¥ —Ç–∞–±–ª–∏—Ü—ã –∏ —Ñ—É–Ω–∫—Ü–∏–∏ –¥–æ—Å—Ç—É–ø–∞ –∫ –Ω–∏–º
 BYTE m73d2[16]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
      m7713[31]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -108,7 +108,7 @@ void put8(WORD adr, BYTE reg)
   if((adr>=0x7e80)&&(adr<0x7f80)) {m7f80[adr-0x7e80]=reg; return;}
 }
 
-//™Æ¨†≠§† ldir
+//–∫–æ–º–∞–Ω–¥–∞ ldir
 void ldir(void)
 {
   BYTE tmp;
@@ -120,7 +120,7 @@ void ldir(void)
   }
 }
 
-//‚†°´®Ê† ØÆ 13 °†©‚ (ß†≠®¨†•‚ ØÆ´Æ¢®≠„ Ø†¨Ô‚® ®ß 128™) ® ‰„≠™Ê®® §Æ·‚„Ø†
+//—Ç–∞–±–ª–∏—Ü–∞ –ø–æ 13 –±–∞–π—Ç (–∑–∞–Ω–∏–º–∞–µ—Ç –ø–æ–ª–æ–≤–∏–Ω—É –ø–∞–º—è—Ç–∏ –∏–∑ 128–∫) –∏ —Ñ—É–Ω–∫—Ü–∏–∏ –¥–æ—Å—Ç—É–ø–∞
 BYTE tabl[65520];//[1260*4*13];
 void call785a(void)// hl=789a
 {
@@ -142,7 +142,7 @@ void call7847(void)// de=789a
   }
 }
 
-//‰„≠™Ê®® ·§¢®£†
+//—Ñ—É–Ω–∫—Ü–∏–∏ —Å–¥–≤–∏–≥–∞
 void rla(void)
 {
   BYTE tmp=a;
@@ -175,7 +175,7 @@ void rr(BYTE &reg)
   fc=tmp&1;
 }
 
-//‡†°Æ‚† · °®‚†¨®
+//—Ä–∞–±–æ—Ç–∞ —Å –±–∏—Ç–∞–º–∏
 void bit(BYTE bit, BYTE reg)
 {
   fz=!((reg>>bit)&1);
@@ -189,7 +189,7 @@ void cp(BYTE val)
   else      fc=0;
 }
 
-//´Æ£®Á•·™®• ‰„≠™Ê®®
+//–ª–æ–≥–∏—á–µ—Å–∫–∏–µ —Ñ—É–Ω–∫—Ü–∏–∏
 void and(BYTE reg)
 {
   a&=reg;
@@ -204,7 +204,7 @@ void or(BYTE reg)
   fz=(a==0)?1:0;
 }
 
-//‡†°Æ‚† ·Æ ·‚•™Æ¨
+//—Ä–∞–±–æ—Ç–∞ —Å–æ —Å—Ç–µ–∫–æ–º
 void exx(void)
 {
   WORD tmp;
@@ -213,7 +213,7 @@ void exx(void)
   tmp=hl; hl=hl_.r16; hl_.r16=tmp;
 }
 
-//Á‚•≠®• ≠•·™Æ´Ï™®Â °†©‚
+//—á—Ç–µ–Ω–∏–µ –Ω–µ—Å–∫–æ–ª—å–∫–∏—Ö –±–∞–π—Ç
 bool putBytes(BYTE count1)// put some bytes
 {
   BYTE count=0x80-count1;
@@ -226,7 +226,7 @@ bool putBytes(BYTE count1)// put some bytes
   return true;
 }
 
-//¢ÎÁ®‚†≠®• ®ß HL
+//–≤—ã—á–∏—Ç–∞–Ω–∏–µ –∏–∑ HL
 void sbc_hl(WORD reg)
 {
   WORD tmp=hl;
@@ -235,7 +235,7 @@ void sbc_hl(WORD reg)
   fc=(tmp<(reg+fc))?1:0;
 }
 
-//‡†Ø†™Æ¢È®™ §´Ô LZPress
+//—Ä–∞–ø–∞–∫–æ–≤—â–∏–∫ –¥–ª—è LZPress
 void unlz(BYTE* from, WORD fromSize, BYTE* to, WORD toSize)
 {
   curTo     = to;

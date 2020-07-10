@@ -216,7 +216,7 @@ Detector::Detector(char* path)
     if(noFormats == 255) break;
     ptr = skipWS(line);
     
-    // пропускаем пустые строки и коментарии
+    // ╨┐╤А╨╛╨┐╤Г╤Б╨║╨░╨╡╨╝ ╨┐╤Г╤Б╤В╤Л╨╡ ╤Б╤В╤А╨╛╨║╨╕ ╨╕ ╨║╨╛╨╝╨╡╨╜╤В╨░╤А╨╕╨╕
     if(!*ptr || *ptr == '#' || *ptr == ';') continue;
 
     if(*ptr == '[')
@@ -349,7 +349,7 @@ Detector::Detector(char* path)
       {
         while(*ptr && !(*ptr == ' ' || *ptr == '\t')) ++ptr;
         ptr = skipWS(ptr);
-        if(!*ptr) break; // кончились байтики
+        if(!*ptr) break; // ╨║╨╛╨╜╤З╨╕╨╗╨╕╤Б╤М ╨▒╨░╨╣╤В╨╕╨║╨╕
 
         if(*ptr != '?')
         {

@@ -16,7 +16,7 @@ Options           op;
 
 void WINAPI _export SetStartupInfo(PluginStartupInfo *info)
 {
-  // получили свою копию PluginStartupInfo
+  // ╨┐╨╛╨╗╤Г╤З╨╕╨╗╨╕ ╤Б╨▓╨╛╤О ╨║╨╛╨┐╨╕╤О PluginStartupInfo
   startupInfo = *info;
   fmtReader = new FmtReader(startupInfo.ModuleName);
 

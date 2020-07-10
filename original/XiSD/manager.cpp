@@ -20,12 +20,12 @@ Manager::Manager(char* fileName, FmtPlugin* fmtPlugin)
 
   filer->reload(img);
   openHostFile();
-  // �⠥� ���ଠ�� � ��᪥
+  // читаем информацию о диске
   u8 buf[blockSize];
   readBlock(0, buf);
   CopyMemory(&dsk, buf, sizeof(DiskHdr));
 
-  // �⠥� ������ ��⠫��
+  // читаем главный каталог
   readFolder(dsk.mainDir1stBlock, files);
 
   for(int fNum = 1; fNum < files[0].dir.totalFiles; ++fNum)

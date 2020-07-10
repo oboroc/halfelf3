@@ -176,11 +176,11 @@ void Manager::getOpenPluginInfo(OpenPluginInfo* info)
   
   // C0 - trdos name
   // C1 - trdos 'start'
-  // C2 - размер в секторах
+  // C2 - ╤А╨░╨╖╨╝╨╡╤А ╨▓ ╤Б╨╡╨║╤В╨╛╤А╨░╤Е
   // C3 - packedSize
-  // C4 - метод упаковки
-  // C5 - описание типа
-  // C6 - комментарий к файлу
+  // C4 - ╨╝╨╡╤В╨╛╨┤ ╤Г╨┐╨░╨║╨╛╨▓╨║╨╕
+  // C5 - ╨╛╨┐╨╕╤Б╨░╨╜╨╕╨╡ ╤В╨╕╨┐╨░
+  // C6 - ╨║╨╛╨╝╨╝╨╡╨╜╤В╨░╤А╨╕╨╣ ╨║ ╤Д╨░╨╣╨╗╤Г
   
   mode[3].ColumnTypes="N,C2,N,C2";
   mode[3].ColumnWidths="0,3,0,3";
@@ -226,14 +226,14 @@ int Manager::getFindData(PluginPanelItem **pPanelItem, int *pNoItems, int opMode
 
   if(noFiles == 0) return TRUE;
 
-  // считаем ширину столбца для отображения trdos'ного имени
+  // ╤Б╤З╨╕╤В╨░╨╡╨╝ ╤И╨╕╤А╨╕╨╜╤Г ╤Б╤В╨╛╨╗╨▒╤Ж╨░ ╨┤╨╗╤П ╨╛╤В╨╛╨▒╤А╨░╨╢╨╡╨╜╨╕╤П trdos'╨╜╨╛╨│╨╛ ╨╕╨╝╨╡╨╜╨╕
   PanelInfo panel;
   startupInfo.Control(this, FCTL_GETPANELINFO, &panel);
   int nameColumnWidth = 12;
 
   if(panel.ViewMode == 4)
   {
-    // 25 - ширина остальных колонок,  2 - рамка панели
+    // 25 - ╤И╨╕╤А╨╕╨╜╨░ ╨╛╤Б╤В╨░╨╗╤М╨╜╤Л╤Е ╨║╨╛╨╗╨╛╨╜╨╛╨║,  2 - ╤А╨░╨╝╨║╨░ ╨┐╨░╨╜╨╡╨╗╨╕
     nameColumnWidth = panel.PanelRect.right - panel.PanelRect.left - 2 - 25;
   }
   if(nameColumnWidth < 12) nameColumnWidth = 12;
@@ -335,7 +335,7 @@ void Manager::freeFindData(PluginPanelItem *panelItem, int noItems)
 
 bool Manager::readInfo(void)
 {
-  // проверяем не изменился ли файл на диске
+  // ╨┐╤А╨╛╨▓╨╡╤А╤П╨╡╨╝ ╨╜╨╡ ╨╕╨╖╨╝╨╡╨╜╨╕╨╗╤Б╤П ╨╗╨╕ ╤Д╨░╨╣╨╗ ╨╜╨░ ╨┤╨╕╤Б╨║╨╡
   WIN32_FIND_DATA data;
   HANDLE h = FindFirstFile(hostFileName, &data);
   if(h == INVALID_HANDLE_VALUE) return false;

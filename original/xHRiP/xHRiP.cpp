@@ -15,7 +15,7 @@ Detector*            detector;
 
 void WINAPI _export SetStartupInfo(PluginStartupInfo *info)
 {
-  // ØÆ´„Á®´® ·¢ÆÓ ™ÆØ®Ó PluginStartupInfo
+  // –ø–æ–ª—É—á–∏–ª–∏ —Å–≤–æ—é –∫–æ–ø–∏—é PluginStartupInfo
   startupInfo         = *info;
 
   reg                 = new Registry(startupInfo.RootKey);
@@ -40,7 +40,7 @@ HANDLE WINAPI _export OpenFilePlugin(char *name, const unsigned char *data, int 
 {
   if(name == NULL) return INVALID_HANDLE_VALUE;
 
-  // Ø‡Æ¢•‡®¨ ≠† HoBet'≠Æ·‚Ï
+  // –ø—Ä–æ–≤–µ—Ä–∏–º –Ω–∞ HoBet'–Ω–æ—Å—Ç—å
   HoHdr hdr;
   CopyMemory(&hdr, data, sizeof(HoHdr));
   if(hdr.checkSum != calculateCheckSum(hdr)) return INVALID_HANDLE_VALUE;

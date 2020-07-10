@@ -93,7 +93,7 @@ bool Manager::readInfo(void)
 {
   u32 noBytesRead;
   
-  // ¯à®¢¥àï¥¬ ­¥ ¨§¬¥­¨«áï «¨ ä ©« ­  ¤¨áª¥
+  // Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½Ðµ Ð¸Ð·Ð¼ÐµÐ½Ð¸Ð»ÑÑ Ð»Ð¸ Ñ„Ð°Ð¹Ð» Ð½Ð° Ð´Ð¸ÑÐºÐµ
   WIN32_FIND_DATA data;
   HANDLE h = FindFirstFile(hostFileName, &data);
   if(h == INVALID_HANDLE_VALUE) return false;
@@ -140,7 +140,7 @@ u16 Manager::getNoFreeBlocks(void)
   {
     u8 b = device_sys[blockSize+i];
     if(b == 0xFF) continue;
-    // áç¨â ¥¬ ª®«¨ç¥áâ¢® 1 ¢ ¡ ©â¥
+    // ÑÑ‡Ð¸Ñ‚Ð°ÐµÐ¼ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ 1 Ð² Ð±Ð°Ð¹Ñ‚Ðµ
     n = (b & 0x55) + ((b & 0xAA) >> 1);
     n = (n & 0x33) + ((n & 0xCC) >> 2);
     n = (n & 0x0f) + ((n & 0xf0) >> 4);

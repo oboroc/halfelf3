@@ -171,12 +171,12 @@ WORD calculateCheckSum(const HoHdr& hdr)
 
 int createFile(HANDLE& file, char* name, int& action)
 {
-  // �஢��塞 ����稥 䠩��
+  // проверяем наличие файла
   WIN32_FIND_DATA data;
   HANDLE h = FindFirstFile(name, &data);
   if(h != INVALID_HANDLE_VALUE)
   {
-    // 䠩� � ⠪�� ������ �������
+    // файл с таким именем существует
     FindClose(h);
     if(action == 2) return 0;
     if(action == 0)
@@ -279,7 +279,7 @@ DWORD writeSCLHeader(HANDLE file, BYTE no_files)
   WriteFile(file, signature, sizeof(signature), &noBytesWritten, NULL);
   WriteFile(file, &no_files, 1, &noBytesWritten, NULL);
   
-  // १�ࢨ�㥬 ���� ��� ��⠫���
+  // резервируем место для каталога
   SetFilePointer(file, no_files*sizeof(FileHdr)+8+1, NULL, FILE_BEGIN);
   SetEndOfFile(file);
   

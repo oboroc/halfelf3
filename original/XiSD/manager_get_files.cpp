@@ -89,13 +89,13 @@ int Manager::writeFile(const char *name, const UniHdr& hdr)
 
 int isFileExist(const char* name, const UniHdr& hdr, Action& action)
 {
-  // проверяем наличие файла
+  // ╨┐╤А╨╛╨▓╨╡╤А╤П╨╡╨╝ ╨╜╨░╨╗╨╕╤З╨╕╨╡ ╤Д╨░╨╣╨╗╨░
   WIN32_FIND_DATA data;
   HANDLE h = FindFirstFile(name, &data);
   if(h != INVALID_HANDLE_VALUE)
   {
     FindClose(h);
-    // файл с таким именем существует
+    // ╤Д╨░╨╣╨╗ ╤Б ╤В╨░╨║╨╕╨╝ ╨╕╨╝╨╡╨╜╨╡╨╝ ╤Б╤Г╤Й╨╡╤Б╤В╨▓╤Г╨╡╤В
     if(action == SKIP_ALL) return 0;
     if(action == ASK_USER)
     {
@@ -270,7 +270,7 @@ int Manager::getFiles(PluginPanelItem *panelItem,
   FarDialogItem dialogItems[sizeof(items)/sizeof(items[0])];
   initDialogItems(items, dialogItems, sizeof(items)/sizeof(items[0]));
   
-  // если надо показать диалог, то покажем
+  // ╨╡╤Б╨╗╨╕ ╨╜╨░╨┤╨╛ ╨┐╨╛╨║╨░╨╖╨░╤В╤М ╨┤╨╕╨░╨╗╨╛╨│, ╤В╨╛ ╨┐╨╛╨║╨░╨╢╨╡╨╝
   if((opMode & OPM_SILENT) == 0)
   {
     int askCode = startupInfo.Dialog(startupInfo.ModuleNumber,
@@ -282,7 +282,7 @@ int Manager::getFiles(PluginPanelItem *panelItem,
     lstrcpy(destPath, dialogItems[2].Data);
   }
   
-  // если пользователь хочет, то создадим каталоги
+  // ╨╡╤Б╨╗╨╕ ╨┐╨╛╨╗╤М╨╖╨╛╨▓╨░╤В╨╡╨╗╤М ╤Е╨╛╤З╨╡╤В, ╤В╨╛ ╤Б╨╛╨╖╨┤╨░╨┤╨╕╨╝ ╨║╨░╤В╨░╨╗╨╛╨│╨╕
   if(GetFileAttributes(destPath)==0xFFFFFFFF)
     for(char *c=destPath; *c; c++)
     {

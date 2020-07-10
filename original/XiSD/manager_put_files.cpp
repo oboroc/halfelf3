@@ -89,8 +89,8 @@ int Manager::putOneFile(UniHdr* pDir, WIN32_FIND_DATA& file, const char* fromDir
   int fNum = findFile(pDir, cname);
   if(fNum)
   {
-    // 䠩� ��� ��⠫�� � ⠪�� ������ 㦥 �������
-    if(isDir(pDir[fNum]))  return 0; // �� ��⠫��
+    // файл или каталог с таким именем уже существует
+    if(isDir(pDir[fNum]))  return 0; // это каталог
     if(pDir[fNum].attr == 0xFF && pDir[fNum].file.systemFlag == 0xFF) return 0;
     
     if(action == SKIP_ALL) return 0;
@@ -151,7 +151,7 @@ int Manager::putOneFile(UniHdr* pDir, WIN32_FIND_DATA& file, const char* fromDir
                   action = DO_ALL;
       }
     }
-    // 㤠�塞 䠩�
+    // удаляем файл
     Action actProtected = DO_ALL;
     Action actFolder    = DO_ALL;
     deleteOneFile(pDir[fNum], pDir, dirName, OPM_SILENT, actProtected, actFolder);

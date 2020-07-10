@@ -217,7 +217,7 @@ FileType detectFileType(HANDLE file)
   
   DWORD noBytesRead;
   
-  // �஢��塞 � �� HoBeta �� ��
+  // проверяем уж не HoBeta ли это
   HoHdr hdr;
   ReadFile(file, &hdr, sizeof(HoHdr), &noBytesRead, 0);
 
@@ -225,7 +225,7 @@ FileType detectFileType(HANDLE file)
   if(hdr.checkSum == calculateCheckSum(hdr) &&
      fileSize >= sectorSize*hdr.noSecs + sizeof(HoHdr)) return FMT_HOBETA;
   
-  // �஢��塞 � �� SCL �� ��
+  // проверяем уж не SCL ли это
   BYTE buf[sizeof(signature)];
   ReadFile(file, buf, sizeof(buf), &noBytesRead, 0);
   BYTE no_files;

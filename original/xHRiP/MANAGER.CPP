@@ -193,10 +193,10 @@ void Manager::getOpenPluginInfo(OpenPluginInfo* info)
   
   // C0 - trdos name
   // C1 - trdos 'start'
-  // C2 - размер в секторах
+  // C2 - ╤А╨░╨╖╨╝╨╡╤А ╨▓ ╤Б╨╡╨║╤В╨╛╤А╨░╤Е
   // C3 - packedSize
-  // C4 - описание типа
-  // C5 - комментарий к файлу
+  // C4 - ╨╛╨┐╨╕╤Б╨░╨╜╨╕╨╡ ╤В╨╕╨┐╨░
+  // C5 - ╨║╨╛╨╝╨╝╨╡╨╜╤В╨░╤А╨╕╨╣ ╨║ ╤Д╨░╨╣╨╗╤Г
   
   mode[3].ColumnTypes="N,C2,N,C2";
   mode[3].ColumnWidths="0,3,0,3";
@@ -242,14 +242,14 @@ int Manager::getFindData(PluginPanelItem **pPanelItem, int *pNoItems, int opMode
 
   if(noFiles == 0) return TRUE;
 
-  // считаем ширину столбца для отображения trdos'ного имени
+  // ╤Б╤З╨╕╤В╨░╨╡╨╝ ╤И╨╕╤А╨╕╨╜╤Г ╤Б╤В╨╛╨╗╨▒╤Ж╨░ ╨┤╨╗╤П ╨╛╤В╨╛╨▒╤А╨░╨╢╨╡╨╜╨╕╤П trdos'╨╜╨╛╨│╨╛ ╨╕╨╝╨╡╨╜╨╕
   PanelInfo panel;
   startupInfo.Control(this, FCTL_GETPANELINFO, &panel);
   int nameColumnWidth = 12;
 
   if(panel.ViewMode == 4)
   {
-    // 21 - ширина остальных колонок,  2 - рамка панели
+    // 21 - ╤И╨╕╤А╨╕╨╜╨░ ╨╛╤Б╤В╨░╨╗╤М╨╜╤Л╤Е ╨║╨╛╨╗╨╛╨╜╨╛╨║,  2 - ╤А╨░╨╝╨║╨░ ╨┐╨░╨╜╨╡╨╗╨╕
     nameColumnWidth = panel.PanelRect.right - panel.PanelRect.left - 2 - 21;
   }
   if(nameColumnWidth < 12) nameColumnWidth = 12;
@@ -327,7 +327,7 @@ void Manager::freeFindData(PluginPanelItem *panelItem, int noItems)
 
 bool Manager::readInfo(void)
 {
-  // проверяем не изменился ли файл на диске
+  // ╨┐╤А╨╛╨▓╨╡╤А╤П╨╡╨╝ ╨╜╨╡ ╨╕╨╖╨╝╨╡╨╜╨╕╨╗╤Б╤П ╨╗╨╕ ╤Д╨░╨╣╨╗ ╨╜╨░ ╨┤╨╕╤Б╨║╨╡
   WIN32_FIND_DATA data;
   HANDLE h = FindFirstFile(hostFileName, &data);
   if(h == INVALID_HANDLE_VALUE) return false;
@@ -342,11 +342,11 @@ bool Manager::readInfo(void)
     SetFilePointer(hostFile, hdrOffset+3, NULL, FILE_BEGIN);
     DWORD noBytesRead;
     ReadFile(hostFile, &noFiles, 1, &noBytesRead, NULL);
-    if(noFiles == 'P') noFiles = 0xFF; // для HRiP версии 0.98
+    if(noFiles == 'P') noFiles = 0xFF; // ╨┤╨╗╤П HRiP ╨▓╨╡╤А╤Б╨╕╨╕ 0.98
 
     BlockHdr block;
     ExtInfo  info;
-    // перемещаемся на первый блок в архиве
+    // ╨┐╨╡╤А╨╡╨╝╨╡╤Й╨░╨╡╨╝╤Б╤П ╨╜╨░ ╨┐╨╡╤А╨▓╤Л╨╣ ╨▒╨╗╨╛╨║ ╨▓ ╨░╤А╤Е╨╕╨▓╨╡
 
     DWORD offset = 8;
     setPointer(offset);
@@ -363,7 +363,7 @@ bool Manager::readInfo(void)
         char signature[] = { 'H', 'r', 's', 't', '2' };
         if(memcmp(&block.signature, signature, sizeof(signature)))
         {
-          if(noFiles != 0xFF) // для HRiP версии 0.98
+          if(noFiles != 0xFF) // ╨┤╨╗╤П HRiP ╨▓╨╡╤А╤Б╨╕╨╕ 0.98
           {
             errorMessage(getMsg(MEndOfArchive));
             isUnexpectedEnd = true;
@@ -372,7 +372,7 @@ bool Manager::readInfo(void)
           break;
         }
         
-        // каталоги пропускаем
+        // ╨║╨░╤В╨░╨╗╨╛╨│╨╕ ╨┐╤А╨╛╨┐╤Г╤Б╨║╨░╨╡╨╝
         if(block.flags & 0x80)
         {
           BYTE dirHdrSize, dirHdr[255];
@@ -384,7 +384,7 @@ bool Manager::readInfo(void)
           continue;
         }
         
-        // читаем остаток заголовка блока
+        // ╤З╨╕╤В╨░╨╡╨╝ ╨╛╤Б╤В╨░╤В╨╛╨║ ╨╖╨░╨│╨╛╨╗╨╛╨▓╨║╨░ ╨▒╨╗╨╛╨║╨░
         read(&block.size, 5);
         
         pSize += block.pSize;
@@ -394,9 +394,9 @@ bool Manager::readInfo(void)
           read(&info, sizeof(ExtInfo));
           CopyMemory(&files[i], &info.file, sizeof(FileHdr));
         }
-        // если длина дополнительной информации нестандартная,
-        // пропускаем доп. информацию.
-        // !!!! надо подумать о создании файла с каким-нибудь именем
+        // ╨╡╤Б╨╗╨╕ ╨┤╨╗╨╕╨╜╨░ ╨┤╨╛╨┐╨╛╨╗╨╜╨╕╤В╨╡╨╗╤М╨╜╨╛╨╣ ╨╕╨╜╤Д╨╛╤А╨╝╨░╤Ж╨╕╨╕ ╨╜╨╡╤Б╤В╨░╨╜╨┤╨░╤А╤В╨╜╨░╤П,
+        // ╨┐╤А╨╛╨┐╤Г╤Б╨║╨░╨╡╨╝ ╨┤╨╛╨┐. ╨╕╨╜╤Д╨╛╤А╨╝╨░╤Ж╨╕╤О.
+        // !!!! ╨╜╨░╨┤╨╛ ╨┐╨╛╨┤╤Г╨╝╨░╤В╤М ╨╛ ╤Б╨╛╨╖╨┤╨░╨╜╨╕╨╕ ╤Д╨░╨╣╨╗╨░ ╤Б ╨║╨░╨║╨╕╨╝-╨╜╨╕╨▒╤Г╨┤╤М ╨╕╨╝╨╡╨╜╨╡╨╝
         
         offset += sizeof(BlockHdr) + block.extInfoSize + block.pSize;
         setPointer(offset);

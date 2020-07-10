@@ -1,7 +1,7 @@
 .autodepend
 
 #----------------------------------------------------------
-# ����室��� ������ ⮫쪮 3 ᫥���騥 ��ப�
+# необходимо менять только 3 следующие строки
 #----------------------------------------------------------
 TARGET   = XiSD.dll
 OBJFILES = debug.obj XiSD.obj FmtReader.obj tools.obj iSDOS_tools.obj manager_tools.obj manager.obj iterator.obj manager_get_files.obj memory.obj manager_delete_files.obj registry.obj manager_make_folder.obj manager_put_files.obj manager_process_key.obj

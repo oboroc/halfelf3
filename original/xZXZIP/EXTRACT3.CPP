@@ -1,25 +1,25 @@
 #include <windows.h>
-#include <stdlib.h>  // ¤«ï qsort
-#include <string.h>  // ¤«ï strncmp
+#include <stdlib.h>  // Ğ´Ğ»Ñ qsort
+#include <string.h>  // Ğ´Ğ»Ñ strncmp
 #include "extract.hpp"
 
 extern BYTE *curTo, *curFrom;
 extern WORD toSize_, fromSize_;
 extern WORD noBytesRead, noBytesWritten;
 
-// ®¤¨­ í«¥¬¥­â ¤¥à¥¢  ˜¥­®­ -” ­®
+// Ğ¾Ğ´Ğ¸Ğ½ ÑĞ»ĞµĞ¼ĞµĞ½Ñ‚ Ğ´ĞµÑ€ĞµĞ²Ğ° Ğ¨ĞµĞ½Ğ¾Ğ½Ğ°-Ğ¤Ğ°Ğ½Ğ¾
 struct  SFTEntry
 {
-  BYTE blen;         // ª®«-¢® ¡¨â
-  BYTE value;        // §­ ç¥­¨¥
-  WORD code;         // ª®¤
+  BYTE blen;         // ĞºĞ¾Ğ»-Ğ²Ğ¾ Ğ±Ğ¸Ñ‚
+  BYTE value;        // Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ
+  WORD code;         // ĞºĞ¾Ğ´
 };
 
-// ã¯ ª®¢ ­­ë¥ ¤¥à¥¢ìï ˜¥­®­ -” ­®
+// ÑƒĞ¿Ğ°ĞºĞ¾Ğ²Ğ°Ğ½Ğ½Ñ‹Ğµ Ğ´ĞµÑ€ĞµĞ²ÑŒÑ Ğ¨ĞµĞ½Ğ¾Ğ½Ğ°-Ğ¤Ğ°Ğ½Ğ¾
 BYTE pSFT_64_1[] =
 {
- 0x07, // à §¬¥à
- 0x01, 0x13, 0x34, 0xE5, 0xF6, 0x96, 0xF7 // ã¯ ª®¢ ­­ë¥ ¤ ­­ë¥
+ 0x07, // Ñ€Ğ°Ğ·Ğ¼ĞµÑ€
+ 0x01, 0x13, 0x34, 0xE5, 0xF6, 0x96, 0xF7 // ÑƒĞ¿Ğ°ĞºĞ¾Ğ²Ğ°Ğ½Ğ½Ñ‹Ğµ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğµ
 };
 
 BYTE pSFT_64_2[] =
@@ -85,10 +85,10 @@ void extractSFTree(BYTE *ptr, SFTEntry *sft, int n)
   WORD noBytesToRead = *ptr++;
 
   int i = 0;
-  while(noBytesToRead--) // ç¨â ¥¬ ¤¥à¥¢®
+  while(noBytesToRead--) // Ñ‡Ğ¸Ñ‚Ğ°ĞµĞ¼ Ğ´ĞµÑ€ĞµĞ²Ğ¾
   {
-    WORD blen = (*ptr & 0x0f) + 1; // ¯®«ãç¨«¨ ª®«-¢® ¡¨â
-    WORD ne   = (*ptr++ >> 4) + 1; // ¯®«ãç¨«¨ ª®«-¢® §­ ç¥­¨©
+    WORD blen = (*ptr & 0x0f) + 1; // Ğ¿Ğ¾Ğ»ÑƒÑ‡Ğ¸Ğ»Ğ¸ ĞºĞ¾Ğ»-Ğ²Ğ¾ Ğ±Ğ¸Ñ‚
+    WORD ne   = (*ptr++ >> 4) + 1; // Ğ¿Ğ¾Ğ»ÑƒÑ‡Ğ¸Ğ»Ğ¸ ĞºĞ¾Ğ»-Ğ²Ğ¾ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğ¹
 
     while(ne--)
     {
@@ -103,7 +103,7 @@ void extractSFTree(BYTE *ptr, SFTEntry *sft, int n)
   WORD code = 0, lastBitLen = 0, codeIncrement = 0;
   
   SFTEntry *p;
-  for(p = &sft[n - 1]; p >= sft; p--) // áâà®¨¬ ª®¤ë
+  for(p = &sft[n - 1]; p >= sft; p--) // ÑÑ‚Ñ€Ğ¾Ğ¸Ğ¼ ĞºĞ¾Ğ´Ñ‹
   {
     code += codeIncrement;
     p->code = code;
@@ -115,7 +115,7 @@ void extractSFTree(BYTE *ptr, SFTEntry *sft, int n)
   }
   
   p = sft;
-  while(n--) // ¨­¢¥àâ¨àã¥¬ ª®¤ë
+  while(n--) // Ğ¸Ğ½Ğ²ĞµÑ€Ñ‚Ğ¸Ñ€ÑƒĞµĞ¼ ĞºĞ¾Ğ´Ñ‹
   {
     code              = p->code;
     WORD invertedCode = 0;

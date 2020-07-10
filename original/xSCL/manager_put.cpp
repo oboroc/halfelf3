@@ -13,7 +13,7 @@ int Manager::checkExistingFiles(FileHdr* hdrs,
                                 int no_files,
                                 int& allActions)
 {
-  // Ø‡Æ¢•‡Ô•¨ ≠†´®Á®• ‰†©´† · ‚†™®¨ ®¨•≠•¨
+  // –ø—Ä–æ–≤–µ—Ä—è–µ–º –Ω–∞–ª–∏—á–∏–µ —Ñ–∞–π–ª–∞ —Å —Ç–∞–∫–∏–º –∏–º–µ–Ω–µ–º
   bool fileAlreadyExists = false;
   int fNum;
   for(fNum = 0; fNum < no_files; ++fNum)
@@ -134,7 +134,7 @@ int Manager::putFiles(PluginPanelItem *panelItem, int noItems, int move, int opM
   DWORD   noBytesWritten, noBytesRead;
   FileHdr hdrs[255];
 
-  DWORD noSecsInHostFile = 0;   // Æ°È•• ™Æ´´®Á•·‚¢Æ ·•™‚Æ‡Æ¢ ¢ host ‰†©´•
+  DWORD noSecsInHostFile = 0;   // –æ–±—â–µ–µ –∫–æ–ª–ª–∏—á–µ—Å—Ç–≤–æ —Å–µ–∫—Ç–æ—Ä–æ–≤ –≤ host —Ñ–∞–π–ª–µ
   for(int i = 0; i < noFiles; ++i)
   {
     hdrs[i] = files[i];
@@ -142,10 +142,10 @@ int Manager::putFiles(PluginPanelItem *panelItem, int noItems, int move, int opM
   }
   
   int   exitCode = 1;
-  BYTE  totalFiles   = noFiles; // Æ°È•• ™Æ´´®Á•·‚¢Æ ‰†©´Æ¢
-  DWORD totalSectors = 0;       // Æ°È•• ™Æ´´®Á•·‚¢Æ ·•™‚Æ‡Æ¢ ¢ ™ÆØ®‡„•¨ÎÂ ‰†©´†Â
+  BYTE  totalFiles   = noFiles; // –æ–±—â–µ–µ –∫–æ–ª–ª–∏—á–µ—Å—Ç–≤–æ —Ñ–∞–π–ª–æ–≤
+  DWORD totalSectors = 0;       // –æ–±—â–µ–µ –∫–æ–ª–ª–∏—á–µ—Å—Ç–≤–æ —Å–µ–∫—Ç–æ—Ä–æ–≤ –≤ –∫–æ–ø–∏—Ä—É–µ–º—ã—Ö —Ñ–∞–π–ª–∞—Ö
 
-  int   allActions = 0;         // §†≠≠Î• Æ ≠†¶†‚®® ™≠ÆØÆ™ write_all ® skip_all
+  int   allActions = 0;         // –¥–∞–Ω–Ω—ã–µ –æ –Ω–∞–∂–∞—Ç–∏–∏ –∫–Ω–æ–ø–æ–∫ write_all –∏ skip_all
 
   HANDLE file;
   HANDLE screen = startupInfo.SaveScreen(0,0,-1,-1);
@@ -195,12 +195,12 @@ int Manager::putFiles(PluginPanelItem *panelItem, int noItems, int move, int opM
       hdr.noSecs   = ho_hdr.noSecs;
    
       int r = checkExistingFiles(hdrs, hdr, totalFiles, allActions);
-      if(r == -1)   // ≠†¶†‚ Cancel
+      if(r == -1)   // –Ω–∞–∂–∞—Ç Cancel
       {
         exitCode = -1;
         break;
       }
-      if(r == 0)    // ≠†¶†‚ Skip/Skip all
+      if(r == 0)    // –Ω–∞–∂–∞—Ç Skip/Skip all
       {
         CloseHandle(file);
         exitCode = 0;
@@ -234,13 +234,13 @@ int Manager::putFiles(PluginPanelItem *panelItem, int noItems, int move, int opM
         ReadFile(file, &hdr, sizeof(FileHdr), &noBytesRead, NULL);
 
         int r = checkExistingFiles(hdrs, hdr, totalFiles, allActions);
-        if(r == -1)   // ≠†¶†‚ Cancel
+        if(r == -1)   // –Ω–∞–∂–∞—Ç Cancel
         {
           exitCode = -1;
           break;
         }
         
-        if(r == 0)  // ≠†¶†‚ Skip/Skip all
+        if(r == 0)  // –Ω–∞–∂–∞—Ç Skip/Skip all
         {
           isFullFileCopied = false;
           fileOffset += hdr.noSecs*sectorSize;
@@ -272,7 +272,7 @@ int Manager::putFiles(PluginPanelItem *panelItem, int noItems, int move, int opM
         break;
       }
       
-      // ‰Æ‡¨®‡„•¨ ®¨Ô
+      // —Ñ–æ—Ä–º–∏—Ä—É–µ–º –∏–º—è
       char name[8]  = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
       if(no_files > 1) FillMemory(name, 8, '_');
       
@@ -285,7 +285,7 @@ int Manager::putFiles(PluginPanelItem *panelItem, int noItems, int move, int opM
         if(pos == 8) break;
       }
       
-      // ‰Æ‡¨®‡„•¨ ‡†·Ë®‡•≠®•
+      // —Ñ–æ—Ä–º–∏—Ä—É–µ–º —Ä–∞—Å—à–∏—Ä–µ–Ω–∏–µ
       char ext[3]   = {'C', 0, 0};
       ptr = pointToExt(panelItem[iNum].FindData.cFileName);
       pos = 0;
@@ -322,19 +322,19 @@ int Manager::putFiles(PluginPanelItem *panelItem, int noItems, int move, int opM
         }
         else
         {
-          // ØÆ·´•§≠®© ™„·Æ™
+          // –ø–æ—Å–ª–µ–¥–Ω–∏–π –∫—É—Å–æ–∫
           hdr.noSecs = sizeInSec;
           hdr.size   = fileSize;
         }
 
         int r = checkExistingFiles(hdrs, hdr, totalFiles, allActions);
-        if(r == -1)   // ≠†¶†‚ Cancel
+        if(r == -1)   // –Ω–∞–∂–∞—Ç Cancel
         {
           exitCode = -1;
           break;
         }
         
-        if(r == 0)  // ≠†¶†‚ Skip/Skip all
+        if(r == 0)  // –Ω–∞–∂–∞—Ç Skip/Skip all
         {
           isFullFileCopied = false;
           exitCode = 0;
@@ -359,7 +359,7 @@ int Manager::putFiles(PluginPanelItem *panelItem, int noItems, int move, int opM
       if(move) DeleteFile(panelItem[iNum].FindData.cFileName);
     }
   }
-  // •·´® ¢ÎË´® ®ß Ê®™´† ØÆ break
+  // –µ—Å–ª–∏ –≤—ã—à–ª–∏ –∏–∑ —Ü–∏–∫–ª–∞ –ø–æ break
   if(file != INVALID_HANDLE_VALUE) CloseHandle(file);
 
   char *msgItems[2];

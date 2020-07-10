@@ -13,7 +13,7 @@ void  addEndSlash     (char *path);
 char* trim            (char *str);
 
 int  memcmp (const BYTE* p1, const BYTE* p2, int maxlen);
-// ·‡†¢≠•≠®• Æ°´†·‚•© Ø†¨Ô‚® °•ß „Á•‚† ‡•£®·‚‡†
+// —Å—Ä–∞–≤–Ω–µ–Ω–∏–µ –æ–±–ª–∞—Å—Ç–µ–π –ø–∞–º—è—Ç–∏ –±–µ–∑ —É—á–µ—Ç–∞ —Ä–µ–≥–∏—Å—Ç—Ä–∞
 int  memcmpi(const char* p1, const char* p2, int maxlen);
 
 void  makeTrDosName(char* dest, const FileHdr& hdr, int width);

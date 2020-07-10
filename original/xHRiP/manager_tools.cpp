@@ -58,7 +58,7 @@ void Manager::makePCNames(void)
       }
     }
 
-    // ��ࠡ��뢠�� ᯥ樠��� ����� ���ன��
+    // обрабатываем специальные имена устройств
     if(noChars == 3 || noChars == 4)
     {
       if(!memcmpi(to, "com", 3) ||
@@ -98,7 +98,7 @@ void Manager::makePCNames(void)
       detector->getType(typeNum, to+dotPos+2);
       pcFiles[fNum].skipHeader = detector->getSkipHeader(typeNum);
     }
-    // ��ࠡ��뢠�� �����⮬�� zxzip ��娢�
+    // обрабатываем многотомные zxzip архивы
     if(fNum != 0 &&
        !memcmp(from, "********ZIP", 11) &&
        !memcmp(&files[fNum-1].type, "ZIP", 3))
@@ -108,7 +108,7 @@ void Manager::makePCNames(void)
       else
         lstrcpyn(to, pcFiles[fNum-1].name, lstrlen(pcFiles[fNum-1].name));
     }
-    // ��ࠡ��뢠�� �������騥�� �����
+    // обрабатываем повторяющиеся имена
     int i = fNum;
     while(i-- > 0)
     {
@@ -118,7 +118,7 @@ void Manager::makePCNames(void)
         BYTE ch = pcFiles[i].name[len];
         ch = (ch != 0) ? ch+1 : '0';
         
-        // ��� ⠪�� �ਢ�� ��ࠡ�⪠ :(
+        // вот такая кривая обработка :(
         if(ch == '9'+1) ch = 'A'; 
         if(ch == 'Z'+1) ch = 'a';
         if(ch == 'z'+1) ch = '0';
