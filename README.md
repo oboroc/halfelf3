@@ -1,4 +1,4 @@
-# xFar - Far Manager plugins for ZX Spectrum emulators
+# xFar3 - ZX Spectrum emulators plugins for Far Manager 3
 
 Copyright (c) 1998-2000 HalfElf
 Copyright (c) 2003 Александр Медведев, Старый Оскол
