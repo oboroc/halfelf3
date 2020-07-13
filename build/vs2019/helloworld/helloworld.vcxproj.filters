@@ -45,7 +45,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="plugin.def">
+    <None Include="helloworld.def">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
