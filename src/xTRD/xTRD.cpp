@@ -2,13 +2,13 @@
 //#define VC_EXTRALEAN
 
 #include "..\far-sdk\plugin.hpp"
-#include "HelloWorldLng.hpp"
+#include "xTRDLng.hpp"
 #include "version.hpp"
 #include <initguid.h>
 #include "guid.hpp"
-#include "HelloWorld.hpp"
+#include "xTRD.hpp"
 
-PluginStartupInfo    startupInfo;
+static struct PluginStartupInfo Info;
 
 void WINAPI GetGlobalInfoW(struct GlobalInfo *Info)
 {

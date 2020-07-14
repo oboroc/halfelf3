@@ -15,37 +15,37 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\helloworld\HelloWorld.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ResourceCompile Include="..\..\..\src\xTRD\xTRD.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\src\helloworld\guid.hpp">
+    <ClInclude Include="..\..\..\src\xTRD\guid.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\helloworld\HelloWorld.hpp">
+    <ClInclude Include="..\..\..\src\xTRD\version.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\far-sdk\plugin.hpp">
+    <ClInclude Include="..\..\..\src\xTRD\xTRD.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\helloworld\HelloWorldLng.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\helloworld\version.hpp">
+    <ClInclude Include="..\..\..\src\xTRD\xTRDLng.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\far-sdk\farversion.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\src\far-sdk\plugin.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\..\..\src\helloworld\HelloWorld.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
+    <ClCompile Include="..\..\..\src\xTRD\xTRD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="helloworld.def">
+    <None Include="..\..\..\src\xTRD\xTRD.def">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
