@@ -37,7 +37,42 @@ const wchar_t *GetMsg(int MsgId)
 void WINAPI SetStartupInfoW(const struct PluginStartupInfo *psi)
 {
 	Info=*psi;
+/*  reg                    = new Registry(startupInfo.RootKey);
+  
+  op.reread              = false;
+  op.showExt             = reg->getNumber(HKEY_CURRENT_USER, "ShowExt",            1);
+  op.defaultPanelMode    = reg->getNumber(HKEY_CURRENT_USER, "DefaultPanelMode",   5);
+  op.defaultFormat       = reg->getNumber(HKEY_CURRENT_USER, "DefaultFormat",      1);
+  op.detectFormat        = reg->getNumber(HKEY_CURRENT_USER, "DetectFormat",       1);
+  op.autoMove            = reg->getNumber(HKEY_CURRENT_USER, "AutoMove",           1);
+  op.useDS               = reg->getNumber(HKEY_CURRENT_USER, "UseDS",              1);
+
+  char cmdLine1[300] = "c:\\dir1\\emul1.exe %P [%N]";
+  char cmdLine2[300] = "c:\\dir2\\emul2.exe %d \"%f\"";
+  char types1[100] = "Bb";
+  char types2[100] = "*";
+  reg->getString(HKEY_CURRENT_USER, "CmdLine1", op.cmdLine1, cmdLine1, 300);
+  reg->getString(HKEY_CURRENT_USER, "CmdLine2", op.cmdLine2, cmdLine2, 300);
+  reg->getString(HKEY_CURRENT_USER, "Types1",   op.types1,   types1,   100);
+  reg->getString(HKEY_CURRENT_USER, "Types2",   op.types2,   types2,   100);
+  op.fullScreen1 = reg->getNumber(HKEY_CURRENT_USER, "FullScreen1", 0);
+  op.fullScreen2 = reg->getNumber(HKEY_CURRENT_USER, "FullScreen2", 0);
+
+  char iniFilePath[300] = "";
+  reg->getString(HKEY_CURRENT_USER, "IniFilePath", op.iniFilePath, iniFilePath, 300);
+  
+  detector            = new Detector (startupInfo.ModuleName);
+  fmtReader           = new FmtReader(startupInfo.ModuleName);*/
 }
+
+
+void WINAPI ExitFARW()
+{
+/*  delete reg;
+  delete detector;
+  delete fmtReader;*/
+}
+
 
 /*
  Function GetPluginInfoW is called to get information about the plugin
@@ -54,7 +89,7 @@ void WINAPI GetPluginInfoW(struct PluginInfo *Info)
 }
 
 /*
- Function OpenPluginW is called each time a new plugin copy is created.
+ Function OpenW is called each time a new plugin copy is created.
 */
 HANDLE WINAPI OpenW(const struct OpenInfo *OInfo)
 {
