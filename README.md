@@ -1,7 +1,9 @@
 # halfelf3 - ZX Spectrum plugins for Far Manager 3
 
 Copyright (c) 1998-2000 HalfElf
+
 Copyright (c) 2003 Александр Медведев, Старый Оскол
+
 Copyright (c) 2020 halfelf3 team
 
 Thanks to @RomanRom2 for pointing me to the source code
