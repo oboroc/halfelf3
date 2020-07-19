@@ -6,8 +6,8 @@ Copyright (c) 2003 Александр Медведев, Старый Оскол
 
 Copyright (c) 2020 halfelf3 team
 
-Thanks to @RomanRom2 for pointing me to the source code
-of the original halfelf plugins:
+Thanks to [@RomanRom2](https://github.com/RomanRom2)
+for pointing me to the source code of the original halfelf plugins:
 <http://zxsn.ru/halfelf/>.
 
 ## Potentially useful information
