@@ -28,3 +28,6 @@ ipch/
 *.VC.db
 *.VC.db-*
 *.VC.VC.opendb
+
+# junk
+~examples~
