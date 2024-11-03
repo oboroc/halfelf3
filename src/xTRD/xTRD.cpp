@@ -1,7 +1,7 @@
 ﻿//#define WIN32_LEAN_AND_MEAN
 //#define VC_EXTRALEAN
 
-#include "..\far-sdk\plugin.hpp"
+#include "../far-sdk/plugin.hpp"
 #include "xTRDLng.hpp"
 #include "version.hpp"
 #include <initguid.h>
